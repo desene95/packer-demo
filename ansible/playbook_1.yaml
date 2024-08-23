@@ -1,0 +1,4 @@
+- name: Include Role
+  ansible.builtin.include_roles:
+    name: nginx_linux
+    

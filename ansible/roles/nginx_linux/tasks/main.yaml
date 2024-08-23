@@ -26,10 +26,10 @@
   loop_control:
     loop_var: dir
 
-- name: Check if template file exist
-  ansible.builtin.stat:
-    path: /Users/damianesene/packer-demo/packer_ami/nginx/templates/{{ product }}_install.yaml.j2
-  register: template_file
+# - name: Check if template file exist
+#   ansible.builtin.stat:
+#     path: /Users/damianesene/packer-demo/packer_ami/nginx/templates/{{ product }}_install.yaml.j2
+#   register: template_file
 
 - name: Create files from templates
   ansible.builtin.template:
