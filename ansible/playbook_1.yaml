@@ -4,5 +4,5 @@
   hosts: localhost
   tasks:
     - name: Include Role
-      ansible.builtin.include_roles:
+      ansible.builtin.include_role:
         name: nginx_linux
