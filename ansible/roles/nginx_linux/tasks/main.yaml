@@ -33,12 +33,12 @@
 
 - name: Create files from templates
   ansible.builtin.template:
-    src: '{{ file }}.j2'
+    src: '../templates/{{ file }}.j2'
     dest: '{{ playbook_dir }}/post-playbooks/{{ file }}'
     mode: '0644'
   loop:
     - vm.json
-    - vars.yaml
+   # - vars.yaml
   loop_control:
     loop_var: file
 - name: Create file from template
