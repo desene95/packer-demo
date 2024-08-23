@@ -3,7 +3,7 @@
   gather_facts: true
   hosts: localhost
   vars_files:
-    - packer_vars.yaml
+    - ../packer_ami/nginx/packer_vars.yaml
   tasks:
     - name: Print variables
       ansible.builtin.debug:
