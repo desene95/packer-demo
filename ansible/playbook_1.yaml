@@ -1,4 +1,8 @@
-- name: Include Role
-  ansible.builtin.include_roles:
-    name: nginx_linux
-    
+---
+- name: Run packer
+  gather_facts: true
+  hosts: localhost
+  tasks:
+    - name: Include Role
+      ansible.builtin.include_roles:
+        name: nginx_linux
