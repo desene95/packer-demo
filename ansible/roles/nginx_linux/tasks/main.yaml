@@ -2,6 +2,7 @@
 #   ansible.builtin.include_vars:
 #     file: ../packer_ami/nginx/packer_vars.yaml
 #   register: packer_vars
+---
 
  - name: Load nginx  variables
    ansible.builtin.include_vars:
