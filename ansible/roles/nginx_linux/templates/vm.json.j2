@@ -1,0 +1,39 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "{{ packer_vars.PACKER.region }}",
+      "source_ami": "{{ packer_vars.PACKER.source_ami }}", 
+      "assume_role": {
+        "role_arn": "arn:aws:iam::787257093414:role/full_ec2_access"
+      },
+      "vpc_id": "{{ packer_vars.PACKER.vpc_id }}",
+      "subnet_id": "{{ packer_vars.PACKER.subnet_id }}",
+      "instance_type": "{{ packer_vars.PACKER.instance_type }}",
+      "ssh_username": "{{ packer_vars.PACKER.ssh_username }}",
+      "ami_name": "nginx-ami-{{timestamp}}",
+      "ami_description": "An AMI with NGINX installed using Ansible",
+      "tags": {
+        "Name": "nginx-ami-{{timestamp}}",
+        "Created": "{{timestamp}}",
+        "Source_Ami": "{{ packer_vars.PACKER.source_ami }}"
+      },
+      "ami_block_device_mappings": [{
+          "device_name": "{{ nginx.MACHINES.device_name" }},
+          "volume_type": "{{ nginx.MACHINES.volume_type" }},
+          "volume_size": "{{ nginx.MACHINES.volume_size" }},
+          "encrypted": false,
+          "delete_on_termination": "{{ nginx.MACHINES.delete_on_termination" }}
+      }]
+      
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "ansible",
+      "playbook_file": "{{ product }}_install.yaml",
+      "playbook_dir": {{ playbook_dir }}",
+      "command": "ansible-playbook"
+    }
+  ]
+}
