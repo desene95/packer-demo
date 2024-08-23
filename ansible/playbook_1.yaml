@@ -6,9 +6,9 @@
     - packer_vars.yaml
   tasks:
     - name: Print variables
-        ansible.builtin.debug:
+      ansible.builtin.debug:
           var: packer_vars
-          
+
     - name: Include Role
       ansible.builtin.include_role:
         name: nginx_linux
