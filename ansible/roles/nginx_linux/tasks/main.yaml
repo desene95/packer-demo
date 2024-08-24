@@ -62,9 +62,23 @@
 #   changed_when: packer_init.rc | int == 0
 #   ignore_errors: true
 
-- name: Run packer build
+- name: Run packer upgrade for json
   ansible.builtin.command: /usr/bin/packer hcl2_upgrade {{ playbook_dir }}/post-playbooks/vm.json
-  register: packer_st
-  failed_when: packer_st.rc | int > 0
-  changed_when: packer_st.rc | int == 0
+  register: packer_up
+  failed_when: packer_up.rc | int > 0
+  changed_when: packer_up.rc | int == 0
+  ignore_errors: true
+
+- name: Run packer init
+  ansible.builtin.command: /usr/bin/packer init {{ playbook_dir }}/post-playbooks/vm.json.pkr.hcl
+  register: packer_init
+  failed_when: packer_init.rc | int > 0
+  changed_when: packer_inti.rc | int == 0
+  ignore_errors: true
+
+- name: Run packer build
+  ansible.builtin.command: /usr/bin/packer build {{ playbook_dir }}/post-playbooks/vm.json.pkr.hcl
+  register: packer_bu
+  failed_when: packer_bu.rc | int > 0
+  changed_when: packer_bu.rc | int == 0
   ignore_errors: true
