@@ -44,7 +44,7 @@
     loop_var: file
 - name: Create file from template
   template:
-    src: '/Users/damianesene/packer-demo/packer_ami/nginx/templates/{{ product }}_install.yaml.j2'
+    src: '../packer_ami/nginx/templates/{{ product }}_install.yaml.j2'
     dest: '{{ playbook_dir }}/{{ product }}_install.yaml'
     mode: '0644'
   when: template_file.stat.exists
