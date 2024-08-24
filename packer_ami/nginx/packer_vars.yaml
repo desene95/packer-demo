@@ -1,7 +1,7 @@
 PACKER:
   region: ca-central-1
   account_num: 787257093414
-  source_ami: ami-0c55b159cbfafe1f0
+  source_ami: ami-03bcd79f25ca6b127
   instance_type: t2-micro
   ssh_username: ubuntu
   vpc_id: vpc-015807ee07e3c435f
