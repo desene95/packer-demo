@@ -9,7 +9,7 @@ MACHINE:
     volume_size: 10
     volume_type: gp3
     iops: 3000
-    delete_on_termination: true
+    delete_on_termination: True
     vg_name: vg01
     lv_name: lv_app
     fs_mountpoint: '/u01/app'
