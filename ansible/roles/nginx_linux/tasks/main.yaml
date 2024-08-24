@@ -5,6 +5,10 @@
     file: ../packer_ami/nginx/packer_vars.yaml
   register: packer_vars
 
+- name: Print loaded packer variables
+  ansible.builtin.debug:
+    var: packer_vars
+
 
 - name: Load nginx  variables
   ansible.builtin.include_vars:
