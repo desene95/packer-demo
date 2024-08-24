@@ -2,7 +2,7 @@
   "builders": [
     {
       "type": "amazon-ebs",
-      "region": "{{ packer_vars.ansible_facts.PACKER.region }}",
+      "region": "{{ PACKER.region }}",
       "source_ami": "{{ packer_vars.PACKER.source_ami }}",
       "assume_role": {
         "role_arn": "arn:aws:iam::787257093414:role/full_ec2_access"
