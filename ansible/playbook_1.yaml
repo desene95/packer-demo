@@ -5,6 +5,9 @@
   #vars_files:
   #  - ../packer_ami/nginx/packer_vars.yaml
   tasks:
+    - name: Set timestamp variable
+      ansible.builtin.set_fact:
+        timestamp: "{{ ansible_date_time.iso8601 }}"
     #- name: Print variables
     #  ansible.builtin.debug:
     #      var: packer_vars
