@@ -12,7 +12,7 @@
       "subnet_id": "{{ PACKER.subnet_id }}",
       "instance_type": "{{ PACKER.instance_type }}",
       "ssh_username": "{{ PACKER.ssh_username }}",
-      "ami_name": "${clean_resource_name("nginx-ami-${timestamp()}")}",
+      "ami_name": "nginx-ami",
       "ami_description": "An AMI with NGINX installed using Ansible",
       "tags": {
         "Name": "nginx-ami-{{ timestamp }}",
