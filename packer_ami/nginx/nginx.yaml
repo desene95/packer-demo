@@ -13,4 +13,4 @@ MACHINE:
     vg_name: vg01
     lv_name: lv_app
     fs_mountpoint: '/u01/app'
-    website_files: "/var/www/html/index.html"
+  website_files: "/var/www/html/index.html"
