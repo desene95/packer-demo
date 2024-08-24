@@ -20,11 +20,11 @@
       },
       "ami_block_device_mappings": [
         {
-          "device_name": "{{ MACHINE.ami_block_device_mappings.device_name }}",
-          "volume_type": "{{ MACHINE.ami_block_device_mappings.volume_type }}",
-          "volume_size": "{{ MACHINE.ami_block_device_mappings.volume_size }}",
+          "device_name": "{{ MACHINE.device_name }}",
+          "volume_type": "{{ MACHINE.volume_type }}",
+          "volume_size": "{{ MACHINE.volume_size }}",
           "encrypted": false,
-          "delete_on_termination": "{{ MACHINE.ami_block_device_mappings.delete_on_termination }}"
+          "delete_on_termination": "{{ MACHINE.delete_on_termination }}"
         }
       ]
     }
