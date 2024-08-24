@@ -4,9 +4,10 @@
       "type": "amazon-ebs",
       "region": "{{ PACKER.region }}",
       "source_ami": "{{ PACKER.source_ami }}",
-      "assume_role": {
+      "assume_role": [
+      {
         "role_arn": "arn:aws:iam::787257093414:role/full_ec2_access"
-      },
+      }],
       "vpc_id": "{{ PACKER.vpc_id }}",
       "subnet_id": "{{ PACKER.subnet_id }}",
       "instance_type": "{{ PACKER.instance_type }}",
