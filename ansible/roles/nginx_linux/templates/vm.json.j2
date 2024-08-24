@@ -14,7 +14,7 @@
       "ami_name": "nginx-ami-{{timestamp}}",
       "ami_description": "An AMI with NGINX installed using Ansible",
       "tags": {
-        "Name": "nginx-ami-{{timestamp}}",
+        "Name": "nginx-ami-{{ timestamp }}",
         "Created": "{{timestamp}}",
         "Source_Ami": "{{ PACKER.source_ami }}"
       },
