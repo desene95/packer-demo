@@ -4,10 +4,10 @@
 #   register: packer_vars
 ---
 
- - name: Load nginx  variables
-   ansible.builtin.include_vars:
-     file: ../packer_ami/nginx/nginx.yaml
-   register: nginx
+- name: Load nginx  variables
+  ansible.builtin.include_vars:
+    file: ../packer_ami/nginx/nginx.yaml
+  register: nginx
 
 - name: Clean up
   ansible.builtin.file:
