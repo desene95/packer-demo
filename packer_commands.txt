@@ -1,3 +1,7 @@
 packer plugins install github.com/hashicorp/amazon
 
 packer hcl2_upgrade my-template.json
+
+Add aws creds as env variables on ec2
+
+assume role for user on iam
