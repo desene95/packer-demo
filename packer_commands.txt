@@ -5,3 +5,18 @@ packer hcl2_upgrade my-template.json
 Add aws creds as env variables on ec2
 
 assume role for user on iam
+
+Add trust policy to the role
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::787257093414:user/dame_esene"
+      },
+      "Action": "sts:AssumeRole"
+    }
+  ]
+}
