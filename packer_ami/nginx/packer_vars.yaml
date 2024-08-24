@@ -5,5 +5,5 @@ PACKER:
   instance_type: t2-micro
   ssh_username: ubuntu
   vpc_id: vpc-015807ee07e3c435f
-  subnet_id: subnet-0c211690910d72c80
+  subnet_id: subnet-03e635f9ff48c9ca7
   
