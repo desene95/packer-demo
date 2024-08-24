@@ -3,20 +3,20 @@
     {
       "type": "amazon-ebs",
       "region": "{{ PACKER.region }}",
-      "source_ami": "{{ packer_vars.PACKER.source_ami }}",
+      "source_ami": "{{ PACKER.source_ami }}",
       "assume_role": {
         "role_arn": "arn:aws:iam::787257093414:role/full_ec2_access"
       },
-      "vpc_id": "{{ packer_vars.PACKER.vpc_id }}",
-      "subnet_id": "{{ packer_vars.PACKER.subnet_id }}",
-      "instance_type": "{{ packer_vars.PACKER.instance_type }}",
-      "ssh_username": "{{ packer_vars.PACKER.ssh_username }}",
+      "vpc_id": "{{ PACKER.vpc_id }}",
+      "subnet_id": "{{ PACKER.subnet_id }}",
+      "instance_type": "{{ PACKER.instance_type }}",
+      "ssh_username": "{{ PACKER.ssh_username }}",
       "ami_name": "nginx-ami-{{timestamp}}",
       "ami_description": "An AMI with NGINX installed using Ansible",
       "tags": {
         "Name": "nginx-ami-{{timestamp}}",
         "Created": "{{timestamp}}",
-        "Source_Ami": "{{ packer_vars.PACKER.source_ami }}"
+        "Source_Ami": "{{ PACKER.source_ami }}"
       },
       "ami_block_device_mappings": [
         {
