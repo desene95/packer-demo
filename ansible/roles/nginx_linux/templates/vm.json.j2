@@ -24,7 +24,7 @@
           "volume_type": "{{ MACHINE.ami_block_device_mappings.volume_type }}",
           "volume_size": "{{ MACHINE.ami_block_device_mappings.volume_size }}",
           "encrypted": false,
-          "delete_on_termination": "\{{ MACHINE.ami_block_device_mappings.delete_on_termination }}\"
+          "delete_on_termination": "{{ MACHINE.ami_block_device_mappings.delete_on_termination }}"
         }
       ]
     }
