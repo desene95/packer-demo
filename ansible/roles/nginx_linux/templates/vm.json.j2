@@ -20,11 +20,11 @@
       },
       "ami_block_device_mappings": [
         {
-          "device_name": "{{ nginx.MACHINES.device_name }}",
-          "volume_type": "{{ nginx.MACHINES.volume_type }}",
-          "volume_size": "{{ nginx.MACHINES.volume_size }}",
+          "device_name": "{{ MACHINES.device_name }}",
+          "volume_type": "{{ MACHINES.volume_type }}",
+          "volume_size": "{{ MACHINES.volume_size }}",
           "encrypted": false,
-          "delete_on_termination": "{{ nginx.MACHINES.delete_on_termination }}"
+          "delete_on_termination": "{{ MACHINES.delete_on_termination }}"
         }
       ]
     }

@@ -13,7 +13,7 @@
 - name: Load nginx  variables
   ansible.builtin.include_vars:
     file: ../packer_ami/nginx/nginx.yaml
-  register: nginx
+  #register: nginx
 
 - name: Clean up
   ansible.builtin.file:
