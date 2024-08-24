@@ -33,8 +33,8 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "{{ product }}_install.yaml",
-      "playbook_dir": "{{ playbook_dir }}",
+      "playbook_file": "{{ playbook_dir }}/{{ product }}_install.yaml",
+      #"playbook_dir": "{{ playbook_dir }}",
       "command": "ansible-playbook"
     }
   ]
