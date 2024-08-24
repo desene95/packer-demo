@@ -1,5 +1,11 @@
 MACHINE:
-  - device_name: /dev/sdb
+  name: my-nginx-ami
+  nginx_user: "www-data"
+  nginx_config_file: "/etc/nginx/nginx.conf"
+  nginx_default_site: "/etc/nginx/sites-available/default"
+  website_root: "/var/www/html"
+  ami_block_device_mappings:
+    device_name: /dev/sdb
     volume_size: 10
     volume_type: gp3
     iops: 3000
@@ -7,12 +13,4 @@ MACHINE:
     vg_name: vg01
     lv_name: lv_app
     fs_mountpoint: '/u01/app'
- # - ami_block_device_mappings:
-
-    name: my-nginx-ami
-    nginx_user: "www-data"
-    nginx_config_file: "/etc/nginx/nginx.conf"
-    nginx_default_site: "/etc/nginx/sites-available/default"
-    website_root: "/var/www/html"
-        
     #website_files: "path_to_website_files"
