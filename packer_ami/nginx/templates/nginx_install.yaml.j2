@@ -60,49 +60,49 @@
 
    
     
-   # - name: Deploy custom NGINX configuration
-   #   ansible.builtin.template:
-   #     src: ../packer_ami/nginx/templates/nginx.conf.j2
-   #     dest: "{{ MACHINE.nginx_config_file }}"
-   #     mode: '0644'
-   #     #owner: "{{ MACHINE.nginx_user }}"
-   #     #group: "{{ MACHINE.nginx_user }}"
-   #     owner: root
-   #     group: root
-   #   notify:
-   #     - Restart NGINX
+    - name: Deploy custom NGINX configuration
+      ansible.builtin.template:
+        src: ../packer_ami/nginx/templates/nginx.conf.j2
+        dest: "{{ MACHINE.nginx_config_file }}"
+        mode: '0644'
+        #owner: "{{ MACHINE.nginx_user }}"
+        #group: "{{ MACHINE.nginx_user }}"
+        owner: root
+        group: root
+      notify:
+        - Restart NGINX
 
-    #- name: Set up default website
-    #  ansible.builtin.template:
-    ##    src: ../packer_ami/nginx/templates/default_site.j2
-     #   dest: "{{ MACHINE.nginx_default_site }}"
-      #  mode: '0644'
+    - name: Set up default website
+      ansible.builtin.template:
+        src: ../packer_ami/nginx/templates/default_site.j2
+        dest: "{{ MACHINE.nginx_default_site }}"
+        mode: '0644'
        # #owner: "{{ MACHINE.nginx_user }}"
         #group: "{{ MACHINE.nginx_user }}"
+        owner: root
+        group: root
+      notify:
+        - Restart NGINX
+
+    - name: Copy website files
+      ansible.builtin.copy:
+        src: "{{ MACHINE.website_files }}"
+        dest: "{{ MACHINE.website_root }}/index.html"
+        owner: "{{ MACHINE.nginx_user }}"
+        group: "{{ MACHINE.nginx_user }}"
         #owner: root
         #group: root
-      #notify:
-      #  - Restart NGINX
+        mode: '0755'
 
-    #- name: Copy website files
-    #  ansible.builtin.copy:
-    #    src: "{{ MACHINE.website_files }}"
-    #    dest: "{{ MACHINE.website_root }}/index.html"
-    #    owner: "{{ MACHINE.nginx_user }}"
-    #    group: "{{ MACHINE.nginx_user }}"
-        #owner: root
-        #group: root
-    #    mode: '0755'
-
-   # - name: Ensure NGINX is started and enabled
-   #   ansible.builtin.service:
-   #     name: nginx
-   #     state: started
-   #     enabled: yes
+    - name: Ensure NGINX is started and enabled
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
       
 
-  #handlers:
-  #  - name: Restart NGINX
-  #    ansible.builtin.service:
-  #      name: nginx
-  #      state: reloaded
+  handlers:
+    - name: Restart NGINX
+      ansible.builtin.service:
+        name: nginx
+        state: reloaded
