@@ -22,71 +22,87 @@
       website_files: "index.html"
 
   tasks:
-    - name: Create website root directory
-      ansible.builtin.file:
-        path: {{ MACHINE.website_root }}
-        state: directory
-        owner: www-data
-        group: www-data
-        mode: '0755'
+    #- name: Create website root directory
+    #  ansible.builtin.file:
+    #    path: {{ MACHINE.website_root }}
+    #    state: directory
+    #    owner: www-data
+    #    group: www-data
+    #    mode: '0755'
+    #- name: Install NGINX
+    #  ansible.builtin.yum:
+    #    name: nginx
+    #    state: present
+    #  when: ansible_os_family == "RedHat"
+
     - name: Install NGINX
-      ansible.builtin.yum:
-        name: nginx
-        state: present
-      when: ansible_os_family == "RedHat"
-    
-    - name: Install NGINX (Debian/Ubuntu)
       ansible.builtin.apt:
         name: nginx
         state: present
-        update_cache: yes
-      when: ansible_os_family == "Debian"
+        
+    - name: Check NGINX installation
+      ansible.builtin.command:
+        cmd: nginx -v
+      register: nginx_version
+      ignore_errors: yes
+
+    - name: Print NGINX version
+      ansible.builtin.debug:
+        msg: "NGINX version: {{ nginx_version.stderr }}"
+      when: nginx_version is succeeded
+
+    #- name: Install NGINX (Debian/Ubuntu)
+    ##  ansible.builtin.apt:
+     #   name: nginx
+     #   state: present
+     #   update_cache: yes
+     # when: ansible_os_family == "Debian"
 
    
     
-    - name: Deploy custom NGINX configuration
-      ansible.builtin.template:
-        src: ../packer_ami/nginx/templates/nginx.conf.j2
-        dest: "{{ MACHINE.nginx_config_file }}"
-        mode: '0644'
-        #owner: "{{ MACHINE.nginx_user }}"
-        #group: "{{ MACHINE.nginx_user }}"
-        owner: root
-        group: root
-      notify:
-        - Restart NGINX
+   # - name: Deploy custom NGINX configuration
+   #   ansible.builtin.template:
+   #     src: ../packer_ami/nginx/templates/nginx.conf.j2
+   #     dest: "{{ MACHINE.nginx_config_file }}"
+   #     mode: '0644'
+   #     #owner: "{{ MACHINE.nginx_user }}"
+   #     #group: "{{ MACHINE.nginx_user }}"
+   #     owner: root
+   #     group: root
+   #   notify:
+   #     - Restart NGINX
 
-    - name: Set up default website
-      ansible.builtin.template:
-        src: ../packer_ami/nginx/templates/default_site.j2
-        dest: "{{ MACHINE.nginx_default_site }}"
-        mode: '0644'
-        #owner: "{{ MACHINE.nginx_user }}"
+    #- name: Set up default website
+    #  ansible.builtin.template:
+    ##    src: ../packer_ami/nginx/templates/default_site.j2
+     #   dest: "{{ MACHINE.nginx_default_site }}"
+      #  mode: '0644'
+       # #owner: "{{ MACHINE.nginx_user }}"
         #group: "{{ MACHINE.nginx_user }}"
-        owner: root
-        group: root
-      notify:
-        - Restart NGINX
-
-    - name: Copy website files
-      ansible.builtin.copy:
-        src: "{{ MACHINE.website_files }}"
-        dest: "{{ MACHINE.website_root }}/index.html"
-        owner: "{{ MACHINE.nginx_user }}"
-        group: "{{ MACHINE.nginx_user }}"
         #owner: root
         #group: root
-        mode: '0755'
+      #notify:
+      #  - Restart NGINX
 
-    - name: Ensure NGINX is started and enabled
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: yes
+    #- name: Copy website files
+    #  ansible.builtin.copy:
+    #    src: "{{ MACHINE.website_files }}"
+    #    dest: "{{ MACHINE.website_root }}/index.html"
+    #    owner: "{{ MACHINE.nginx_user }}"
+    #    group: "{{ MACHINE.nginx_user }}"
+        #owner: root
+        #group: root
+    #    mode: '0755'
+
+   # - name: Ensure NGINX is started and enabled
+   #   ansible.builtin.service:
+   #     name: nginx
+   #     state: started
+   #     enabled: yes
       
 
-  handlers:
-    - name: Restart NGINX
-      ansible.builtin.service:
-        name: nginx
-        state: reloaded
+  #handlers:
+  #  - name: Restart NGINX
+  #    ansible.builtin.service:
+  #      name: nginx
+  #      state: reloaded
