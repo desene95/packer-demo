@@ -39,7 +39,7 @@
       ansible.builtin.apt:
         name: nginx
         state: present
-        
+
     - name: Check NGINX installation
       ansible.builtin.command:
         cmd: nginx -v
@@ -48,7 +48,7 @@
 
     - name: Print NGINX version
       ansible.builtin.debug:
-        msg: "NGINX version: {{ nginx_version.stderr }}"
+        msg: "NGINX version: "
       when: nginx_version is succeeded
 
     #- name: Install NGINX (Debian/Ubuntu)
