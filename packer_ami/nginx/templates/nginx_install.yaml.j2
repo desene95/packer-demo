@@ -4,11 +4,11 @@
   become: true
 
   tasks:
-    #- name: Install NGINX
-    #  ansible.builtin.yum:
-    #    name: nginx
-    #    state: present
-    #  when: ansible_os_family == "RedHat"
+    - name: Install NGINX
+      ansible.builtin.yum:
+        name: nginx
+        state: present
+      when: ansible_os_family == "RedHat"
     
     - name: Install NGINX (Debian/Ubuntu)
       ansible.builtin.apt:
@@ -44,7 +44,7 @@
         owner: "{{ MACHINE.nginx_user }}"
         group: "{{ MACHINE.nginx_user }}"
         mode: '0755'
-        
+
     - name: Ensure NGINX is started and enabled
       ansible.builtin.service:
         name: nginx
