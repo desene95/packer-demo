@@ -35,6 +35,9 @@
       "type": "ansible",
       "playbook_file": "{{ playbook_dir }}/{{ product }}_install.yaml",
       "inventory_file": "{{ playbook_dir }}/hosts",
+      "extra_arguments": [
+        "--private-key=/home/ubuntu/.ssh/id_rsa"
+      ]
       "command": "ansible-playbook"
     }
   ]
