@@ -13,7 +13,7 @@
     - name: Install NGINX (Debian/Ubuntu)
       ansible.builtin.apt:
         name: nginx
-        state: present
+        state: latest
         update_cache: yes
       when: ansible_os_family == "Debian"
     
@@ -51,15 +51,15 @@
         #group: root
         mode: '0755'
 
-    - name: Ensure NGINX is started and enabled
-      ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: yes
+    #- name: Ensure NGINX is started and enabled
+    #  ansible.builtin.service:
+     #   name: nginx
+     #   state: started
+     #   enabled: yes
       
 
   handlers:
     - name: Restart NGINX
       ansible.builtin.service:
         name: nginx
-        state: restarted
+        state: reloaded
