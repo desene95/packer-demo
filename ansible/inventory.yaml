@@ -1,5 +1,0 @@
-all:
-  hosts:
-    webserver1:
-      ansible_host: 3.96.214.110
-      ansible_user: root
