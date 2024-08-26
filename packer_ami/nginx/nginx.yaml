@@ -13,4 +13,5 @@ MACHINE:
     vg_name: vg01
     lv_name: lv_app
     fs_mountpoint: '/u01/app'
-  website_files: "../packer_ami/nginx/templates/index.html"
+  #website_files: "../packer_ami/nginx/templates/index.html"
+  website_files: "index.html"
