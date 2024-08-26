@@ -19,7 +19,7 @@
 
     - name: Create website root directory
       ansible.builtin.file:
-        path: {{ website_root }}
+        path: {{ MACHINE.website_root }}
         state: directory
         owner: www-data
         group: www-data
