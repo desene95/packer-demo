@@ -38,12 +38,11 @@
 
     - name: Copy website files
       ansible.builtin.copy:
-        src: "/home/ubuntu/packer-demo/ansible/files/"
-        dest: "{{ MACHINE.website_root }}/"
+        src: "{{ MACHINE.website_files }}"
+        dest: "{{ MACHINE.website_root }}/index.html"
         owner: "{{ MACHINE.nginx_user }}"
         group: "{{ MACHINE.nginx_user }}"
         mode: '0755'
-        recursive: yes
     - name: Ensure NGINX is started and enabled
       ansible.builtin.service:
         name: nginx
