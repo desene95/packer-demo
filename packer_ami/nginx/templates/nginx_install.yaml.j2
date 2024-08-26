@@ -41,8 +41,10 @@
       ansible.builtin.copy:
         src: "{{ MACHINE.website_files }}"
         dest: "{{ MACHINE.website_root }}/index.html"
-        owner: "{{ MACHINE.nginx_user }}"
-        group: "{{ MACHINE.nginx_user }}"
+        #owner: "{{ MACHINE.nginx_user }}"
+        #group: "{{ MACHINE.nginx_user }}"
+        owner: root
+        group: root
         mode: '0755'
 
     - name: Ensure NGINX is started and enabled
