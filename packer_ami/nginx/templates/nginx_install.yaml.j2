@@ -39,7 +39,7 @@
     - name: Copy website files
       ansible.builtin.copy:
         src: "/home/ubuntu/packer-demo/ansible/files/"
-        dest: "{{ MACHINE.website_root }}"
+        dest: "{{ MACHINE.website_root }}/"
         owner: "{{ MACHINE.nginx_user }}"
         group: "{{ MACHINE.nginx_user }}"
         mode: '0755'
