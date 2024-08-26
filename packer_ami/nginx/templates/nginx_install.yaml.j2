@@ -28,7 +28,7 @@
         - Restart NGINX
     - name: Set up default website
       ansible.builtin.template:
-        src: default_site.j2
+        src: ../packer_ami/nginx/templates/default_site.j2
         dest: "{{ MACHINE.nginx_default_site }}"
         mode: '0644'
         owner: root
