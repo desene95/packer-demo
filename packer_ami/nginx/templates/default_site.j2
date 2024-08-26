@@ -1,0 +1,26 @@
+# Default Nginx site configuration
+
+server {
+    listen 80;
+    server_name packer_nginx_server;;
+    
+    root /var/www/html;
+    index index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    # Error pages
+    error_page 404 /404.html;
+    location = /404.html {
+        root /var/www/html;
+        internal;
+    }
+
+    # Logging
+    access_log /var/log/access.log;
+    error_log /var/log/error.log;
+    
+    # Additional configurations can go here
+}
