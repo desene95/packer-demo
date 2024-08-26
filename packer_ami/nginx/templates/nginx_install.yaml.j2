@@ -4,18 +4,18 @@
   become: true
 
   tasks:
-    - name: Install NGINX
-      ansible.builtin.yum:
-        name: nginx
-        state: present
-      when: ansible_os_family == "RedHat"
+    #- name: Install NGINX
+    #  ansible.builtin.yum:
+    #    name: nginx
+    #    state: present
+    #  when: ansible_os_family == "RedHat"
     
     - name: Install NGINX (Debian/Ubuntu)
       ansible.builtin.apt:
         name: nginx
         state: present
         update_cache: yes
-      when: ansible_os_family == "Ubuntu"
+      when: ansible_os_family == "Debian"
     
     - name: Deploy custom NGINX configuration
       ansible.builtin.template:
