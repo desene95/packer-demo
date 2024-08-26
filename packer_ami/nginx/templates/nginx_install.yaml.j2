@@ -38,7 +38,7 @@
 
     - name: Copy website files
       ansible.builtin.copy:
-        src: "{{ MACHINE.website_files }}"
+        src: "{{ MACHINE.website_files }}/"
         dest: "{{ MACHINE.website_root }}"
         owner: "{{ MACHINE.nginx_user }}"
         group: "{{ MACHINE.nginx_user }}"
