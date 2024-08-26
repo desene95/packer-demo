@@ -23,7 +23,7 @@ http {
     # Main server block
     server {
         listen       80;
-        server_name  {{ server_name }};
+        server_name  packer_nginx_server;
 
         # Location for serving static files
         location / {
