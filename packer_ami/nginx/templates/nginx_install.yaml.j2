@@ -26,6 +26,7 @@
         group: root
       notify:
         - Restart NGINX
+
     - name: Set up default website
       ansible.builtin.template:
         src: ../packer_ami/nginx/templates/default_site.j2
@@ -43,6 +44,7 @@
         owner: "{{ MACHINE.nginx_user }}"
         group: "{{ MACHINE.nginx_user }}"
         mode: '0755'
+        
     - name: Ensure NGINX is started and enabled
       ansible.builtin.service:
         name: nginx
