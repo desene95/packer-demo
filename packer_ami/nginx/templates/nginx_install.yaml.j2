@@ -4,7 +4,7 @@
   become: true
 
   tasks:
-     - name: Create website root directory
+    - name: Create website root directory
       ansible.builtin.file:
         path: {{ MACHINE.website_root }}
         state: directory
