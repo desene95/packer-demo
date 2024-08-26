@@ -22,8 +22,8 @@
         src: ../packer_ami/nginx/templates/nginx.conf.j2
         dest: "{{ MACHINE.nginx_config_file }}"
         mode: '0644'
-        owner: www-data
-        group: www-data
+        owner: root
+        group: root
       notify:
         - Restart NGINX
     - name: Set up default website
@@ -31,8 +31,8 @@
         src: ../packer_ami/nginx/templates/default_site.j2
         dest: "{{ MACHINE.nginx_default_site }}"
         mode: '0644'
-        owner: www-data
-        group: www-data
+        owner: root
+        group: root
       notify:
         - Restart NGINX
 
