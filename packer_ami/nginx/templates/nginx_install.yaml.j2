@@ -62,7 +62,8 @@
     
     - name: Deploy custom NGINX configuration
       ansible.builtin.template:
-        src: ../packer_ami/nginx/templates/nginx.conf.j2
+        #src: ../packer_ami/nginx/templates/nginx.conf.j2
+        src: {{ playbook_dir }}/{{ product }}.conf
         dest: "{{ MACHINE.nginx_config_file }}"
         mode: '0644'
         #owner: "{{ MACHINE.nginx_user }}"
