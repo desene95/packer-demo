@@ -1,1 +1,2 @@
 product: nginx
+server_name: packer_nginx_server
