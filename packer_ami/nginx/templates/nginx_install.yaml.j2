@@ -19,7 +19,7 @@
     
     - name: Deploy custom NGINX configuration
       ansible.builtin.template:
-        src: nginx.conf.j2
+        src: ./nginx.conf.j2
         dest: "{{ MACHINE.nginx_config_file }}"
         mode: '0644'
         owner: root
