@@ -34,6 +34,7 @@
     {
       "type": "ansible",
       "playbook_file": "{{ playbook_dir }}/{{ product }}_install.yaml",
+      "inventory_file": "{{ playbook_dir }}/hosts"
       "command": "ansible-playbook"
     }
   ]
