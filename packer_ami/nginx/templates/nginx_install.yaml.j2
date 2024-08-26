@@ -22,8 +22,10 @@
         src: ../packer_ami/nginx/templates/nginx.conf.j2
         dest: "{{ MACHINE.nginx_config_file }}"
         mode: '0644'
-        owner: "{{ MACHINE.nginx_user }}"
-        group: "{{ MACHINE.nginx_user }}"
+        #owner: "{{ MACHINE.nginx_user }}"
+        #group: "{{ MACHINE.nginx_user }}"
+        owner: root
+        group: root
       notify:
         - Restart NGINX
 
@@ -32,8 +34,10 @@
         src: ../packer_ami/nginx/templates/default_site.j2
         dest: "{{ MACHINE.nginx_default_site }}"
         mode: '0644'
-        owner: "{{ MACHINE.nginx_user }}"
-        group: "{{ MACHINE.nginx_user }}"
+        #owner: "{{ MACHINE.nginx_user }}"
+        #group: "{{ MACHINE.nginx_user }}"
+        owner: root
+        group: root
       notify:
         - Restart NGINX
 
