@@ -4,6 +4,13 @@
   become: true
 
   tasks:
+     - name: Create website root directory
+      ansible.builtin.file:
+        path: {{ MACHINE.website_root }}
+        state: directory
+        owner: www-data
+        group: www-data
+        mode: '0755'
     - name: Install NGINX
       ansible.builtin.yum:
         name: nginx
@@ -17,13 +24,7 @@
         update_cache: yes
       when: ansible_os_family == "Debian"
 
-    - name: Create website root directory
-      ansible.builtin.file:
-        path: {{ MACHINE.website_root }}
-        state: directory
-        owner: www-data
-        group: www-data
-        mode: '0755'
+   
     
     - name: Deploy custom NGINX configuration
       ansible.builtin.template:
